@@ -1,18 +1,18 @@
 # Sense Hat Marble Maze
 
-A Marble Maze is a game of skill, in which one or more marbles are placed inside of a maze, and the player needs to guide the marbles to a specific point by tilting the maze in various directions, causing the marbles to roll around.
+A marble maze is a game of skill and dexterity: one or more marbles are placed inside a maze, and the player needs to guide them to a specific point by tilting the maze in various directions, causing the marbles to roll around.
 
 ![Marble Maze](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Round_maze.jpg/775px-Round_maze.jpg)
 
-Given that the Sense HAT is capable of reporting it's exact orientation and has an in-built 8x8 pixel LED display, it makes the perfect device to create an electronic marble maze game.
+Given that the Sense HAT is capable of reporting its exact orientation and has an in-built 8x8 pixel LED display, it is the perfect device with which to create an electronic marble maze game.
 
 ## Setting up the Sense HAT
 
 1. To begin with you'll need to start IDLE (`Menu>Programming>Python 3 (IDLE)`).
 
-1. Now create a new text file to write your code in (`File>New File`)
+1. Now create a new text file in which to write your code (`File>New File`).
 
-1. You're going to need to import some modules from the `sense_hat` package to get going, so write the following three lines into your text file that will enable access to the Sense HAT and clear the LED matrix.
+1. You're going to need to import some modules from the `sense_hat` package to get going, so write the following three lines into your text file, to enable access to the Sense HAT and to clear the LED matrix.
 
 	```python
 	from sense_hat import SenseHat
@@ -22,7 +22,7 @@ Given that the Sense HAT is capable of reporting it's exact orientation and has 
 
 ## Drawing the maze
 
-1. To begin with you're going to need to display your maze on the LED matrix. It's best to use some squared paper to draw out your maze first, so that you can easily identify the paths through the maze. The maze you draw is up to you, but you could use the example below if you wanted. It is important that the maze is constructed from solid walls, and that there are no diagonal gaps.
+1. To begin with you're going to need to display your maze on the LED matrix. It's best to use some squared paper to draw the design out first, so that you can easily identify the paths through the maze. The layout is up to you, but you could use the example below if you wanted. It is important that the maze is constructed from solid walls, and that there are no diagonal gaps.
 
 	![maze1](images/maze1.jpg)
 
@@ -37,7 +37,7 @@ Given that the Sense HAT is capable of reporting it's exact orientation and has 
 	b = (0,0,0)
 	```
 	
-1. Then you can draw your maze. You're going to use a *list of lists* to do this. Each row of the matrix is represented by a single list, which are all grouped together in a larger list.
+1. Then you can draw your maze. You're going to use a **list of lists** to do this. Each row of the matrix is represented by a single list, which are all grouped together in a larger list.
 
 	```python
 	maze = [[r,r,r,r,r,r,r,r],
@@ -51,7 +51,7 @@ Given that the Sense HAT is capable of reporting it's exact orientation and has 
 
 	```
 
-1. To finish off this section, you can see how your maze looks on the LED matrix. To do this you're going to need to **flatten** the *list of lists*, into a single list. This is easy to do in Python, as you can add all the individual lists together using the syntax - `sum(maze,[]`. So to display this on the LED matrix, you can write:
+1. To finish off this section, you can see how your maze looks on the LED matrix. To do this you're going to need to **flatten** the **list of lists** into a single list. This is easy to do in Python, as you can add all the individual lists together using the syntax - `sum(maze,[]`. So to display this on the LED matrix, you can write:
 
 	```python
 	sense.set_pixels(sum(maze,[]))
@@ -90,7 +90,7 @@ Given that the Sense HAT is capable of reporting it's exact orientation and has 
 	w = (255,255,255)
 	```
 
-1. Then you can set the starting position of the marble. You can use the variable `x` to store the horizontal position and the variable `y` to store the vertical position. (**If you're using y to store a vertical position, it's important to ensure you don't ever store the colour yellow with a `y`**)
+1. Then you can set the starting position of the marble. You can use the variable `x` to store the horizontal position and the variable `y` to store the vertical position. (**Please note that, if you're using y to store a vertical position, it's important to ensure you don't ever store the colour yellow with a `y`**)
 
 	```python
 	x = 1
@@ -148,11 +148,11 @@ Given that the Sense HAT is capable of reporting it's exact orientation and has 
 
 ## Moving the marble
 
-1. The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the *pitch*, *roll* and *yaw* of the board. You can see an picture illustrating this below.
+1. The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the **pitch**, **roll** and **yaw** of the board. You can see an picture illustrating this below.
 
 	![orientation](images/orientation.png)
 
-1. You don't need the *yaw* orientation of the SenseHat for this project, just the *pitch* and *roll*. Add these two lines into the `while` loop, so that you get constant and up-to-date readings of the orientation, and it looks like this
+1. You don't need the yaw orientation of the SenseHat for this project, just the pitch and roll. Add these two lines into the `while` loop, so that you get constant and up-to-date readings of the orientation, and it looks like this
 
 	```python
 	while not game_over:
@@ -176,9 +176,9 @@ Given that the Sense HAT is capable of reporting it's exact orientation and has 
 	new_y = y
 	```
 
-1. Now it's time to change the position of the marble, depending on the way that the Sense HAT is tilted. When the Sense HAT is lying flat, *pitch* and *yaw* should be approximately 0. They'll then either increase as the Sense HAT is tilted (0,1,2,3,4...), or they'll decrease (0,359,359,357,356...). You'll want to ignore very tiny movements (less than a degree) as the Sense HAT will very rarely be lying completely flat.
+1. Now it's time to change the position of the marble, depending on the way that the Sense HAT is tilted. When the Sense HAT is lying flat, pitch and yaw should be approximately 0. They'll then either increase as the Sense HAT is tilted (0,1,2,3,4...), or they'll decrease (0,359,359,357,356...). You'll want to ignore very tiny movements (less than a degree) as the Sense HAT will very rarely be lying completely flat.
 
-1. If the *pitch* is between 1 and 179, then `new_x` needs to decrease. If it's between 359 and 181, then `new_x`should increase.
+1. If the pitch is between 1 and 179, then `new_x` needs to decrease. If it's between 359 and 181, then `new_x`should increase.
 
 	```python
 	def move_marble(pitch,roll,x,y):
@@ -274,7 +274,7 @@ Given that the Sense HAT is capable of reporting it's exact orientation and has 
 
 1. Save and run your code to check that the marble looks like it's moving.
 
-1. The `IndexError: list assignment index out of range` error, needs fixing next. This occurs because both `x` and `y` values can increase above `7` or decrease below `0`. As this would be off the edges of the LED matrix, the SenseHat library throws an error. This can be fixed by only changing `x` and `y` when they are *not* equal to 0 or 7. Alter your `move_marble` function so that it looks like this:
+1. The `IndexError: list assignment index out of range` error, needs fixing next. This occurs because both `x` and `y` values can increase above `7` or decrease below `0`. As this would be off the edges of the LED matrix, the SenseHat library throws an error. This can be fixed by only changing `x` and `y` when they are **not** equal to 0 or 7. Alter your `move_marble` function so that it looks like this:
 
 	```python
 	def move_marble(pitch,roll,x,y):
