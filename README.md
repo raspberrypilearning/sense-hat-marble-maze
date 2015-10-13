@@ -1,8 +1,8 @@
 # Sense Hat Marble Maze
 
-![Flappy Astronaut](cover.png)
+![Sense Hat Marble Maze Astronaut](cover.png)
 
-In this activity you will create a Marble Maze game that can be played on the LED matrix of your Sense HAT. You will use the in-built orientation sensors of the Sense HAT to control themovement of the marble, simulating the way a real marble rolls around a maze.
+In this activity you will create a Marble Maze game that can be played on the LED matrix of your Sense HAT. You will use the in-built orientation sensors of the Sense HAT to control the movement of the marble, simulating the way a real marble rolls around a maze.
 
 ## Requirements
 
