@@ -97,7 +97,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 	y = 1
 	```
 
-1. Before you draw the marble, as it's going to be continually on the move, it's best to set up a main game loop straight away. You'll need a variable called `game_over` declared somewhere near the top of your program
+1. As the marble is going to be continually on the move, it's best to set up a main game loop straight away, before drawing the marble itself. You'll need a variable called `game_over` declared somewhere near the top of your program
 
 	```python
 	game_over = False
@@ -152,7 +152,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 	![orientation](images/orientation.png)
 
-1. You don't need the yaw orientation of the SenseHat for this project, just the pitch and roll. Add these two lines into the `while` loop, so that you get constant and up-to-date readings of the orientation, and it looks like this
+1. You don't need the yaw orientation of the Sense HAT for this project, just the pitch and the roll. Add these two lines into the `while` loop, so that you get constant and up-to-date readings of the orientation, and it looks like this
 
 	```python
 	while not game_over:
