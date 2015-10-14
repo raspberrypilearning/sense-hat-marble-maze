@@ -46,7 +46,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 			[r,b,r,b,r,r,r,r],
 			[r,b,b,b,b,b,b,r],
 			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,g,b,b,r],
+			[r,b,b,r,b,b,b,r],
 			[r,r,r,r,r,r,r,r]]
 
 	```
@@ -74,7 +74,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 			[r,b,r,b,r,r,r,r],
 			[r,b,b,b,b,b,b,r],
 			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,g,b,b,r],
+			[r,b,b,r,b,b,b,r],
 			[r,r,r,r,r,r,r,r]]
 
     sense.set_pixels(sum(maze,[]))
@@ -134,7 +134,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 			[r,b,r,b,r,r,r,r],
 			[r,b,b,b,b,b,b,r],
 			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,g,b,b,r],
+			[r,b,b,r,b,b,b,r],
 			[r,r,r,r,r,r,r,r]]
 
 	game_over = False
@@ -469,7 +469,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 			[r,b,r,b,r,r,r,r],
 			[r,b,b,b,b,b,b,r],
 			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,g,b,b,r],
+			[r,b,b,r,b,b,b,r],
 			[r,r,r,r,r,r,r,r]]
 	```
 
@@ -577,12 +577,12 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		maze[y][x] = b
 	```
 
-1. Run your code and have a game of *Marble Maze*. Well done, you have completed your Sense Hat game.
+1. Run your code. Well done: you have completed your Sense HAT game!
 
 ## What Next?
 
 1. Can you play around with the variable values to make the game easier or more difficult?
 
-1. Can you alter the code so that the goal changes position each time the player wins a game. Maybe you could change the maze as well.
+1. Can you alter the code so that the goal changes position each time the player wins a game? Maybe you could change the maze as well.
 
-1. Can you add in another marble that starts in another part of the maze, to add some extra difficulty.
+1. Can you add in another marble that starts in another part of the maze? 
