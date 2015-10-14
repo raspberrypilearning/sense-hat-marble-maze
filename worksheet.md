@@ -532,7 +532,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 			[r,b,r,b,r,r,r,r],
 			[r,b,b,b,b,b,b,r],
 			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,b,b,b,r],
+			[r,b,b,r,g,b,b,r],
 			[r,r,r,r,r,r,r,r]]
 
 	def move_marble(pitch,roll,x,y):
