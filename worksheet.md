@@ -486,7 +486,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		global game_over
 	```
 
-1. Then it needs to see if the player has landed on the green LED, and if it has the game ends.
+1. Then the function needs to see if the player has landed on the green LED, and if it has the game ends.
 
 	```python
 	def check_win(x,y):
