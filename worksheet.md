@@ -90,7 +90,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 	w = (255,255,255)
 	```
 
-1. Then you can set the starting position of the marble. You can use the variable `x` to store the horizontal position and the variable `y` to store the vertical position. (**Please note that, if you're using y to store a vertical position, it's important to ensure you don't ever store the colour yellow with a `y`**)
+1. Then you can set the starting position of the marble. You can use the variable `x` to store the horizontal position and the variable `y` to store the vertical position. (Note that, if you're using `y` to store a vertical position, it's important to ensure you don't ever store the colour yellow with a `y`).
 
 	```python
 	x = 1
@@ -148,7 +148,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 ## Moving the marble
 
-1. The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the **pitch**, **roll** and **yaw** of the board. You can see an picture illustrating this below.
+1. The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the pitch, roll and yaw of the board. You can see an picture illustrating this below.
 
 	![orientation](images/orientation.png)
 
@@ -176,7 +176,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 	new_y = y
 	```
 
-1. Now it's time to change the position of the marble, depending on the way that the Sense HAT is tilted. When the Sense HAT is lying flat, pitch and yaw should be approximately 0. They'll then either increase as the Sense HAT is tilted (0,1,2,3,4...), or they'll decrease (0,359,359,357,356...). You'll want to ignore very tiny movements (less than a degree) as the Sense HAT will very rarely be lying completely flat.
+1. Now it's time to change the position of the marble, depending on the way that the Sense HAT is tilted. When the Sense HAT is lying flat, pitch and yaw should be approximately 0. They will then either increase as the Sense HAT is tilted (0,1,2,3,4...), or they'll decrease (0,359,359,357,356...). You'll want to ignore very tiny movements (less than a degree) as the Sense HAT will very rarely be lying completely flat.
 
 1. If the pitch is between 1 and 179, then `new_x` needs to decrease. If it's between 359 and 181, then `new_x`should increase.
 
@@ -250,10 +250,10 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 ## Fixing the code
 
 1. There are two issues:
-  1. A single line of LEDs illuminate instead of a moving marble.
-  1. The code breaks with a `IndexError: list assignment index out of range` error.
+  - A single line of LEDs illuminate instead of a moving marble.
+  - The code breaks with a `IndexError: list assignment index out of range` error.
 
-1. The first problem occurs because once the *marble* moves onto the next LED, you have not changed the colour of the LED back to black. This can be fixed by adding a short sleep() and then setting the colour of the `x`,`y` LED, in the while loop. Import the time library first, near where you imported the SenseHat library.
+1. The first problem occurs because once the marble moves onto the next LED, you have not changed the colour of the LED back to black. This can be fixed by adding a short sleep() and then setting the colour of the `x`,`y` LED, in the while loop. Import the time library first, near where you imported the SenseHat library.
 
 	```python
 	from time import sleep
