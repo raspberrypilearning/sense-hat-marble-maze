@@ -245,7 +245,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		sense.set_pixels(sum(maze,[]))
 	```
 
-1. Save and run your code. (It **will** break)
+1. Save and run your code. It **will** break, but don't worry: we will fix it in the next step.
 
 ## Fixing the code
 
@@ -253,7 +253,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
   - A single line of LEDs illuminate instead of a moving marble.
   - The code breaks with a `IndexError: list assignment index out of range` error.
 
-1. The first problem occurs because once the marble moves onto the next LED, you have not changed the colour of the LED back to black. This can be fixed by adding a short sleep() and then setting the colour of the `x`,`y` LED, in the while loop. Import the time library first, near where you imported the SenseHat library.
+1. The first problem occurs because, once the marble moves onto the next LED, you have not changed the colour of the LED back to black. This can be fixed by adding a short `sleep()` interval and then setting the colour of the `x`,`y` LED in the while loop. Import the time library first, near where you imported the SenseHat library.
 
 	```python
 	from time import sleep
@@ -272,9 +272,9 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		maze[y][x] = b
 	```
 
-1. Save and run your code to check that the marble looks like it's moving.
+1. Save and run your code to check that the marble looks as if it is moving.
 
-1. The `IndexError: list assignment index out of range` error, needs fixing next. This occurs because both `x` and `y` values can increase above `7` or decrease below `0`. As this would be off the edges of the LED matrix, the SenseHat library throws an error. This can be fixed by only changing `x` and `y` when they are **not** equal to 0 or 7. Alter your `move_marble` function so that it looks like this:
+1. The `IndexError: list assignment index out of range` error needs to be fixed next. This occurs because both `x` and `y` values can increase above `7` or decrease below `0`. As this would be outside the boundaries of the LED matrix, the SenseHat library returns an error. This can be fixed by only changing `x` and `y` when they are **not** equal to 0 or 7. Alter your `move_marble` function so that it looks like this:
 
 	```python
 	def move_marble(pitch,roll,x,y):
@@ -378,7 +378,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		return x,y
 	```
 
-1. This function can now be called within the `move_marble` function, to decide what the `x` and `y` coordinates of the marble will be. The last line needs changing to return `x` and `y`, and the line before needs adding, to call the `check_wall` function.
+1. This function can now be called within the `move_marble` function, to decide what the `x` and `y` coordinates of the marble will be. The last line needs to be changed to return `x` and `y`, and the line before needs to be added, to call the `check_wall` function.
 
 	```python
 	def move_marble(pitch,roll,x,y):
@@ -458,7 +458,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 ## For the win
 
-1. Lastly you'll want a way for the player to win. You can pick any *black* LED in the maze and set it as the target for the player to reach. The simplest way to do this is to create a new variable for the colour and then add it into your maze. Add the line and then update the maze.
+1. Lastly you'll want a way for the player to win. You can pick any black LED in the maze and set it as the target for the player to reach. The simplest way to do this is to create a new variable for the colour and then add it into your maze. Add the line and then update the maze.
 
 	```python
 	g = (0,255,0)
@@ -469,7 +469,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 			[r,b,r,b,r,r,r,r],
 			[r,b,b,b,b,b,b,r],
 			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,b,b,b,r],
+			[r,b,b,r,g,b,b,r],
 			[r,r,r,r,r,r,r,r]]
 	```
 
