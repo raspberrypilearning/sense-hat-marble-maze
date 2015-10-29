@@ -51,7 +51,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 	```
 
-1. To finish off this section, you can see how your maze looks on the LED matrix. To do this you're going to need to **flatten** the **list of lists** into a single list. This is easy to do in Python, as you can add all the individual lists together using the syntax - `sum(maze,[]`. So to display this on the LED matrix, you can write:
+1. To finish off this section, you can see how your maze looks on the LED matrix. To do this you're going to need to **flatten** the **list of lists** into a single list. This is easy to do in Python, as you can add all the individual lists together using the syntax - `sum(maze,[])`. So to display this on the LED matrix, you can write:
 
 	```python
 	sense.set_pixels(sum(maze,[]))
