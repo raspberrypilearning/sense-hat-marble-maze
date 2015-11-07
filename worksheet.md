@@ -187,7 +187,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		if 1 < pitch < 179:
 			new_x -= 1
 		elif 359 > pitch > 181:
-		new_x += 1
+			new_x += 1
 		return new_x, new_y
 	```
 
