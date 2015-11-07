@@ -165,13 +165,13 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 1. Now it is time to move the marble. You're going to write a separate function to do this. **Above** the `while` loop, you can define the new function.
 
 	```python
-	def move_marble(pitch, yaw, x, y):
+	def move_marble(pitch, roll, x, y):
 	```
 
-1. The function has `pitch`, `yaw`, `x`, and `y` as parameters. You're going to want to keep the `x` and `y` positions of the marble unchanged (you'll see why later), so the first thing to do is store these values as other variables.
+1. The function has `pitch`, `roll`, `x`, and `y` as parameters. You're going to want to keep the `x` and `y` positions of the marble unchanged (you'll see why later), so the first thing to do is store these values as other variables.
 
 	```python
-	def move_marble(pitch, yaw, x, y):
+	def move_marble(pitch, roll, x, y):
 		new_x = x
 		new_y = y
 	```
