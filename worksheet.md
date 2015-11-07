@@ -172,8 +172,8 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 	```python
 	def move_marble(pitch, yaw, x, y):
-	new_x = x
-	new_y = y
+		new_x = x
+		new_y = y
 	```
 
 1. Now it's time to change the position of the marble, depending on the way that the Sense HAT is tilted. When the Sense HAT is lying flat, pitch and yaw should be approximately 0. They will then either increase as the Sense HAT is tilted (0,1,2,3,4...), or they'll decrease (0,359,359,357,356...). You'll want to ignore very tiny movements (less than a degree) as the Sense HAT will very rarely be lying completely flat.
