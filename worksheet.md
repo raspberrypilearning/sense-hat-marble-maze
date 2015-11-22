@@ -289,7 +289,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 1. Save and run your code to ensure the marble is moving horizontally across the screen.
 
-1. Now that you have the marble moving horizontally, you need to make it move vertically as well. Update the `move_marble` function so that it uses the `yaw` to move the marble in the y direction.
+1. Now that you have the marble moving horizontally, you need to make it move vertically as well. Update the `move_marble` function so that it uses the `roll` to move the marble in the y direction.
 
 	```python
 	def move_marble(pitch,roll,x,y):
