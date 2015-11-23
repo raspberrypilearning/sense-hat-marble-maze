@@ -520,6 +520,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 	sense.clear()
 
 	r = (255,0,0)
+	g = (0,255,0)
 	b = (0,0,0)
 	w = (255,255,255)
 
