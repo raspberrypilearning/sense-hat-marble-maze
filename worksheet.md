@@ -396,7 +396,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		return x,y
 	```
 
-1, The full code should now look like this:
+1. The full code should now look like this:
 
 	```python
 	from sense_hat import SenseHat
