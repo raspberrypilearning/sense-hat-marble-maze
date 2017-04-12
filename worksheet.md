@@ -19,6 +19,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 	sense = SenseHat()
 	sense.clear()
 	```
+	<iframe src="https://trinket.io/embed/python/4728cbe745" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 ## Drawing the maze
 
@@ -80,6 +81,8 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
     sense.set_pixels(sum(maze,[]))
 	```
 
+	<iframe src="https://trinket.io/embed/python/3312ca9b94" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+	
 1. Save it and run it to see the maze displayed on the LED matrix (`Ctrl` + `s`, `F5`)
 
 ## Adding a marble
@@ -145,6 +148,8 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 	```
 
 1. Save it and run it to see the maze and marble on the LED matrix (`Ctrl` + `s`, `F5`)
+
+<iframe src="https://trinket.io/embed/python/fbd97f0e7e" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 ## Moving the marble
 
@@ -246,6 +251,8 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 	```
 
 1. Save and run your code. It **will** break, but don't worry: we will fix it in the next step.
+
+<iframe src="https://trinket.io/embed/python/7197ab0e48" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 ## Fixing the code
 
@@ -357,6 +364,8 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 	```
 
+<iframe src="https://trinket.io/embed/python/5c2e24ced3" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
 ## Handling collision with the walls.
 
 1. You have probably noticed that when the marble moves around the maze, it deletes the walls as it goes. To prevent this from happening, you're going to need some basic collision detection. To do this you can write a new function.
@@ -455,6 +464,8 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		sleep(0.05)
 		maze[y][x] = b
 	```
+
+<iframe src="https://trinket.io/embed/python/4ffb8826a8" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 ## For the win
 
@@ -577,6 +588,8 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 		sleep(0.05)
 		maze[y][x] = b
 	```
+
+<iframe src="https://trinket.io/embed/python/84e8478d96" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 1. Run your code. Well done: you have completed your Sense HAT game!
 
