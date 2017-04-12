@@ -8,7 +8,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 ## Setting up the Sense HAT
 
-1. To begin with you'll need to start IDLE (`Menu>Programming>Python 3 (IDLE)`).
+1. To begin with you'll either need to start IDLE (`Menu>Programming>Python 3 (IDLE)`), if you're using a real SenseHat or open a new [Trinket](https://trinket.io/) if you're using the emulator.
 
 1. Now create a new text file in which to write your code (`File>New File`).
 
