@@ -153,7 +153,7 @@ Given that the Sense HAT is capable of reporting its exact orientation and has a
 
 ## Moving the marble
 
-1. The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the pitch, roll and yaw of the board. You can see an picture illustrating this below.
+1. The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the pitch, roll and yaw of the board. You can see a picture illustrating this below.
 
 	![orientation](images/orientation.png)
 
