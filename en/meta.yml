@@ -4,7 +4,7 @@ hero_image: images/banner.png
 description: Activity to create a marble maze game that can be played on the LED matrix
   of the Sense HAT
 original_url: https://raspberrypi.org/learning/sense-hat-marble-maze
-theme: red
+theme: violet
 duration: 2
 listed: true
 ingredient: false
