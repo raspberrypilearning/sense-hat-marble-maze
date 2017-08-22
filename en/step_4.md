@@ -1,15 +1,27 @@
-## Setting up the Sense HAT
+## Set up the Sense HAT
 
-- To begin with you'll need to start IDLE (`Menu>Programming>Python 3 (IDLE)`) if you're using a real SenseHat, or open a new [Trinket](https://trinket.io/) if you're using the emulator.
++ Start by attaching the Sense HAT to your Raspberry Pi.
+Attaching a Sense HAT
 
-- Now create a new text file in which to write your code (`File>New File`).
+[[[rpi-sensehat-attach]]]
 
-- You're going to need to import some modules from the **sense_hat** package to get going, so write the following three lines into your text file to enable access to the Sense HAT and to clear the LED matrix.
++ If you do not have a Sense HAT, you could create the project in a web browser using the [Sense HAT emulator](https://trinket.io/sense-hat).
 
-	```python
-	from sense_hat import SenseHat
-	sense = SenseHat()
-	sense.clear()
-	```
-	<iframe src="https://trinket.io/embed/python/4728cbe745" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
++ Open the IDLE editor and create a new file, or if you are using the emulator open a new trinket
 
+[[[rpi-gui-idle-opening]]]
+
++ Save your IDLE file as **marble_maze.py**
+
++ In the new file, start by importing the Sense HAT module:
+
+```python
+from sense_hat import SenseHat
+```
+
++ Next, create a connection to your Sense HAT and clear the screen by adding:
+
+```python
+sense = SenseHat()
+sense.clear()
+```

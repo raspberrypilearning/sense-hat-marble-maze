@@ -4,7 +4,7 @@ In this activity you will create a marble maze game that can be played on the LE
 
 ### What you will make
 
-Here is the marble maze game you will make:
+Here is an example of a marble maze game. Press the "Run" button to see it in action.
 
 <iframe src="https://trinket.io/embed/python/71ef2639d7?outputOnly=true" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
