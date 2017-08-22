@@ -14,32 +14,63 @@ The marble's movement will be controlled by moving the Sense HAT. The Sense HAT 
 
 [[[generic-python-while-boolean]]]
 
+--- hints ---
+--- hint ---
+Here is the pseudo code:
+
+**While** the `game_over` variable **equals** False:
+Set the position of the marble in the maze
+Draw the maze on the Sense HAT LED matrix
+
+--- /hint ---
+
+--- hint ---
+You can put lines of code inside a loop by **indenting** them. Highlight the lines of code you wish to indent and press the tab key once.
+--- /hint ---
+
+--- hint ---
+Here is how your code should look:
+
+![While loop hint](images/while-loop-hint.png)
+--- /hint ---
+
+--- /hints ---
+
 This will create a game loop allowing us to update the position of the marble when the Sense HAT is moved.
 
 
-- You don't need the yaw orientation of the Sense HAT for this project, just the pitch and the roll. Add these two lines into the `while` loop, so that you get constant and up-to-date readings of the orientation, and it looks like this:
++ Add some code inside the `while` loop to detect the current **pitch** and **roll** of the Sense HAT.
 
-	```python
-	while not game_over:
-		pitch = sense.get_orientation()['pitch']
-		roll = sense.get_orientation()['roll']
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
-	```
+[[[rpi-sensehat-pitch-roll-yaw]]]
 
-- Now it is time to move the marble. You're going to write a separate function to do this. **Above** the `while` loop, you can define the new function.
+--- hints ---
+--- hint ---
+First, detect the orientation of the Sense HAT using the `get_orientation` method and save this in a variable. Then extract the "pitch" and "roll" values.
+--- /hint ---
 
-	```python
-	def move_marble(pitch, roll, x, y):
-	```
+--- hint ---
+Here is how your code might look:
 
-- The function has `pitch`, `roll`, `x`, and `y` as parameters. You're going to want to keep the `x` and `y` positions of the marble unchanged (you'll see why later), so the first thing to do is store these values as other variables.
+![Get pitch and roll](images/get-pitch-roll-hint.png)
+--- /hint ---
+--- /hints ---
 
-	```python
-	def move_marble(pitch, roll, x, y):
-		new_x = x
-		new_y = y
-	```
++ **Above** the `while` loop, define a new function which will be used to move the marble.
+
+```python
+def move_marble(pitch, roll, x, y):
+```
+[[[generic-python-simple-functions]]]
+
+The function is passed the data `pitch`, `roll`, `x`, and `y` as parameters.
+
++ Inside the function, make a copy of the `x` and `y` values:
+
+```python
+def move_marble(pitch, roll, x, y):
+	new_x = x
+	new_y = y
+```
 
 - Now it's time to change the position of the marble, depending on the way that the Sense HAT is tilted. When the Sense HAT is lying flat, pitch and roll should be approximately 0. They will then either increase as the Sense HAT is tilted (0,1,2,3,4...), or they'll decrease (0,359,359,357,356...). You'll want to ignore very tiny movements (less than a degree) as the Sense HAT will very rarely be lying completely flat.
 
