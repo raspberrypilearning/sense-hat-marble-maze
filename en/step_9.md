@@ -1,25 +1,45 @@
-## Handling collision with the walls.
 
-- You have probably noticed that when the marble moves around the maze, it deletes the walls as it goes. To prevent this from happening, you're going to need some basic collision detection. To do this you can write a new function.
+- There are two issues:
+  - A single line of LEDs illuminate instead of a moving marble.
+  - The code breaks with a `IndexError: list assignment index out of range` error.
 
-	```python
-	def check_wall(x,y,new_x,new_y):
-	```
-
-- This function will check whether there is a wall at the `new_x` and `new_y` coordinates. If there is no wall, then it will return the `new_x` and `new_y`, otherwise it will return to old `x` and `y`. This is why we needed to copy the `x` and `y` variables earlier.
+- The first problem occurs because, once the marble moves onto the next LED, you have not changed the colour of the first LED back to black. This can be fixed by adding a short `sleep()` interval and then setting the colour of the `x`,`y` LED in the while loop. Import the `time` library first, near where you imported the SenseHat library.
 
 	```python
-	def check_wall(x,y,new_x,new_y):
-		if maze[new_y][new_x] != r:
-			return new_x, new_y
-		elif maze[new_y][x] != r:
-			return x, new_y
-		elif maze[y][new_x] != r:
-			return new_x, y
-		return x,y
+	from time import sleep
 	```
 
-- This function can now be called within the `move_marble` function, to decide what the `x` and `y` coordinates of the marble will be. The last line needs to be changed to return `x` and `y`, and the line before needs to be added, to call the `check_wall` function.
+- Then alter the `while` loop, so that the white LED is reset to black in each cycle.
+
+	```python
+	while not game_over:
+		pitch = sense.get_orientation()['pitch']
+		roll = sense.get_orientation()['roll']
+		x,y = move_marble(pitch,roll,x,y)
+		maze[y][x] = w
+		sense.set_pixels(sum(maze,[]))
+		sleep(0.05)
+		maze[y][x] = b
+	```
+
+- Save and run your code to check that the marble looks as if it is moving.
+
+- The `IndexError: list assignment index out of range` error needs to be fixed next. This occurs because both `x` and `y` values can increase above `7` or decrease below `0`. As this would be outside the boundaries of the LED matrix, the SenseHat library returns an error. This can be fixed by only changing `x` and `y` when they are **not** equal to 0 or 7. Alter your `move_marble` function so that it looks like this:
+
+	```python
+	def move_marble(pitch,roll,x,y):
+		new_x = x
+		new_y = y
+		if 1 < pitch < 179 and x != 0:
+			new_x -= 1
+		elif 359 > pitch > 179 and x != 7 :
+			new_x += 1
+		return new_x,new_y
+	```
+
+- Save and run your code to ensure the marble is moving horizontally across the screen.
+
+- Now that you have the marble moving horizontally, you need to make it move vertically as well. Update the `move_marble` function so that it uses the `roll` to move the marble in the y direction.
 
 	```python
 	def move_marble(pitch,roll,x,y):
@@ -33,11 +53,10 @@
 			new_y += 1
 		elif 359 > roll > 179 and y != 0 :
 			new_y -= 1
-		x,y = check_wall(x,y,new_x,new_y)
-		return x,y
+		return new_x,new_y
 	```
 
-- The full code should now look like this:
+- Your full code should now look like this:
 
 	```python
 	from sense_hat import SenseHat
@@ -73,17 +92,7 @@
 			new_y += 1
 		elif 359 > roll > 179 and y != 0 :
 			new_y -= 1
-		x,y = check_wall(x,y,new_x,new_y)
-		return x,y
-
-	def check_wall(x,y,new_x,new_y):
-		if maze[new_y][new_x] != r:
-			return new_x, new_y
-		elif maze[new_y][x] != r:
-			return x, new_y
-		elif maze[y][new_x] != r:
-			return new_x, y
-		return x,y
+		return new_x,new_y
 
 	game_over = False
 
@@ -95,7 +104,7 @@
 		sense.set_pixels(sum(maze,[]))
 		sleep(0.05)
 		maze[y][x] = b
+
 	```
 
-<iframe src="https://trinket.io/embed/python/4ffb8826a8" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-
+<iframe src="https://trinket.io/embed/python/5c2e24ced3" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
