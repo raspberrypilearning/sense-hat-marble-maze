@@ -19,7 +19,7 @@ steps:
 - title: Set up the Sense HAT
 - title: Draw the maze
 - title: Add a marble
-- title: Moving the marble
+- title: Move the marble
 - title: Fixing the code
 - title: Handling collisions with the walls
 - title: For the win

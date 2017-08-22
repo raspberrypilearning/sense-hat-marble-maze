@@ -22,7 +22,7 @@ Here is how your code should look:
 --- /hint ---
 --- /hints ---
 
-+ Underneath the code for the colours, create two variables called `x` and `y` to represent the starting position of the marble. Both `x` and `y` should start with a value of 1.
++ Underneath the code for the colours, create two variables called `x` and `y` to represent the starting position of the marble. The variables `x` and `y` should both start with a value of 1.
 
 [[[generic-python-creating-a-variable]]]
 

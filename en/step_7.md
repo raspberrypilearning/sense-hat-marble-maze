@@ -1,16 +1,21 @@
-## Moving the marble
+## Move the marble
 
-
-
-
-+ Underneath the code that draws the maze, create a boolean variable called `game_over` with a starting value of `False`.
-
-+ Next you can create a `while` loop, and use it to add the marble to the maze list and then redraw the maze.
-
-
-- The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the pitch, roll and yaw of the board. You can see a picture illustrating this below.
+The marble's movement will be controlled by moving the Sense HAT. The Sense HAT library can detect pitch, roll and yaw. You can see a picture illustrating this below.
 
 	![orientation](images/orientation.png)
+
++ Locate the code that sets the position of the marble and draws the maze on the display.
+
+![Draw marble code](images/draw-marble-code.png)
+
++ Above this code, create a Boolean variable called `game_over` with a starting value of `False`.
+
++ Create a **while loop** which runs while the `game_over` variable is False. Put the two highlighted lines of code inside the loop.
+
+[[[generic-python-while-boolean]]]
+
+This will create a game loop allowing us to update the position of the marble when the Sense HAT is moved.
+
 
 - You don't need the yaw orientation of the Sense HAT for this project, just the pitch and the roll. Add these two lines into the `while` loop, so that you get constant and up-to-date readings of the orientation, and it looks like this:
 
