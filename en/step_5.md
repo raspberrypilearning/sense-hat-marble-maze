@@ -1,21 +1,26 @@
-## Drawing the maze
+## Draw the maze
 
-- To begin with you're going to need to display your maze on the LED matrix. It's best to use some squared paper to draw the design out first, so that you can easily identify the paths through the maze. The layout is up to you, but you could use the example below if you wanted. It is important that the maze is constructed from solid walls, and that there are no diagonal gaps.
++ Design your maze on squared paper first, so that it fits on the 8x8 LED matrix. It is important that the maze is constructed from solid walls, and that there are no diagonal gaps.
 
 	![maze1](images/maze1.jpg)
 
-- Once you have drawn your maze, write down the initial of the colour used for each square.
+- Once you have drawn your maze, write down the initial of the colour used in each square.
 
 	![maze2](images/maze2.jpg)
 
-- Now you can implement this in code. First, you'll need to define the colours that you are using.
+Now you can recreate your maze on the Sense HAT's LED display.
+
++ First, define the colour of the walls and the floor by specifying the RGB values. Add this code:
+
+[[[rpi-sensehat-display-colour]]]
 
 	```python
 	r = (255,0,0)
 	b = (0,0,0)
 	```
-	
-- Then you can draw your maze. You're going to use a **list of lists** to do this. Each row of the matrix is represented by a single list, which are all grouped together in a larger list.
+In this example, `r` represents red and `b` represents blank.
+
+- Add code to draw your maze by copying the letters you wrote on your plan into a two dimensional list. Each row of LEDs is represented by a single list, and the rows are grouped together in a larger list.
 
 	```python
 	maze = [[r,r,r,r,r,r,r,r],
@@ -29,36 +34,16 @@
 
 	```
 
-- To finish off this section, you can see how your maze looks on the LED matrix. To do this you're going to need to **flatten** the **list of lists** into a single list. This is easy to do in Python, as you can add all the individual lists together using the syntax - `sum(maze,[])`. To display this on the LED matrix, you can write:
+**Important:** It is possible to draw on the LED matrix using a single list of 64 items. We have deliberately set up the display as a two dimensional list because we will need to access the rows and columns of the LED matrix separately for the game.
 
-	```python
-	sense.set_pixels(sum(maze,[]))
-	```
+- Display your maze on the LED matrix.
 
-- Your code should now look like this:
+To do this you're going to need to **flatten** the **list of lists** into a single list, like this:
 
-	```python
-	from sense_hat import SenseHat
+```python
+sense.set_pixels(sum(maze,[]))
+```
 
-	sense = SenseHat()
-	sense.clear()
+- Save and run your code to see the maze displayed on the LED matrix.
 
-	r = (255,0,0)
-	b = (0,0,0)
-
-	maze = [[r,r,r,r,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,r,r,b,r,b,b,r],
-			[r,b,r,b,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,b,b,b,r],
-			[r,r,r,r,r,r,r,r]]
-
-    sense.set_pixels(sum(maze,[]))
-	```
-
-	<iframe src="https://trinket.io/embed/python/3312ca9b94" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-	
-- Save it and run it to see the maze displayed on the LED matrix (`Ctrl` + `s`, `F5`).
-
+<iframe src="https://trinket.io/embed/python/3312ca9b94" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>

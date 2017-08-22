@@ -1,7 +1,6 @@
 ## Set up the Sense HAT
 
 + Start by attaching the Sense HAT to your Raspberry Pi.
-Attaching a Sense HAT
 
 [[[rpi-sensehat-attach]]]
 
