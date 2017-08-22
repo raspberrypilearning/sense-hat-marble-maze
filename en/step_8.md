@@ -1,14 +1,14 @@
-## Fixing the code
-
+## Move the marble
 
 + **Above** the `while` loop, define a new function which will be used to move the marble.
 
 ```python
 def move_marble(pitch, roll, x, y):
 ```
-[[[generic-python-simple-functions]]]
 
 The function is passed the data `pitch`, `roll`, `x`, and `y` as parameters.
+
+[[[generic-python-simple-functions]]]
 
 + Inside the function, make a copy of the `x` and `y` values:
 
@@ -20,76 +20,53 @@ def move_marble(pitch, roll, x, y):
 
 These will represent the new position of the marble after you've calculated whether it has moved based on the pitch and roll movements.
 
-When the Sense HAT is lying flat, pitch and roll should be approximately 0. They will then either increase as the Sense HAT is tilted (0,1,2,3,4...), or they'll decrease (0,359,359,357,356...).
+### How does the pitch value change?
 
-- If the pitch is between 1 and 179, then `new_x` needs to decrease. If it's between 359 and 181, then `new_x`should increase.
+Imagine the Raspberry Pi with the Sense HAT attached is an aeroplane and the end with the USB ports is the tail of the plane.
 
-	```python
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179:
-			new_x -= 1
-		elif 359 > pitch > 181:
-			new_x += 1
-		return new_x, new_y
-	```
+When the Sense HAT is lying flat, the **pitch** should be approximately 0.
 
-- To test this code out, you'll need to call the function within the `while` loop.
+![Pitch flat](images/pitch-flat.png)
 
-	```python
-	while not game_over:
-		pitch = sense.get_orientation()['pitch']
-		roll = sense.get_orientation()['roll']
-		x,y = move_marble(pitch,roll,x,y)
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
-	```
+If the Sense HAT is rotated so that the nose of the 'plane' is pointing into the air (as it would on take off), the pitch value will decrease (359,359,357,356...).
 
-- Your entire script should now look like this:
+![Pitch taking off](images/pitch-takeoff.png)
 
-	```python
-	from sense_hat import SenseHat
+If the pitch is between 359 and 181, then `new_x` needs to increase to represent the marble moving towards the edge which is lowest to the ground, as marked on the diagram with a yellow arrow.
 
-	sense = SenseHat()
-	sense.clear()
+If the Sense HAT is rotated so that the nose of the 'plane' is pointing towards the ground (as it would on landing), the pitch value will increase (0,1,2,3,4...).
 
-	r = (255,0,0)
-	b = (0,0,0)
-	w = (255,255,255)
+![Pitch landing](images/pitch-landing.png)
 
-	x = 1
-	y = 1
+If the pitch is between 1 and 179, then `new_x` needs to decrease to represent the marble moving the opposite way.
 
-	maze = [[r,r,r,r,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,r,r,b,r,b,b,r],
-			[r,b,r,b,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,b,b,b,r],
-			[r,r,r,r,r,r,r,r]]
+### Coding the marble
 
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179:
-			new_x -= 1
-		elif 359 > pitch > 181:
-			new_x += 1
-		return new_x,new_y
+If the pitch is between 1 and 179, then `new_x` should decrease by 1. Add some code within your `move_marble` function to reflect this:
 
-	game_over = False
+```python
+def move_marble(pitch,roll,x,y):
+	new_x = x
+	new_y = y
+	if 1 < pitch < 179:
+		new_x -= 1
+	return new_x, new_y
+```
 
-	while not game_over:
-		pitch = sense.get_orientation()['pitch']
-		roll = sense.get_orientation()['roll']
-		x,y = move_marble(pitch,roll,x,y)
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
-	```
++ Add some more code within your `move_marble` function to say "If the pitch is between 359 and 181, then `new_x` should increase by 1".
 
-- Save and run your code. It **will** break, but don't worry: we will fix it in the next step.
++ To test this code out, you'll need to call the function within the `while` loop.
+
+```python
+while not game_over:
+	pitch = sense.get_orientation()['pitch']
+	roll = sense.get_orientation()['roll']
+	x,y = move_marble(pitch,roll,x,y)
+	maze[y][x] = w
+	sense.set_pixels(sum(maze,[]))
+```
+
+- Save and run your code. What happens?
 
 <iframe src="https://trinket.io/embed/python/7197ab0e48" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 

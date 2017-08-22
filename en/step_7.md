@@ -54,3 +54,5 @@ Here is how your code might look:
 ![Get pitch and roll](images/get-pitch-roll-hint.png)
 --- /hint ---
 --- /hints ---
+
+If you run your program at this stage, nothing different will happen as we need to put the pitch and roll data to work in the next step!
