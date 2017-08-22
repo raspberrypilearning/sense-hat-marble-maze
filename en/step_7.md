@@ -2,7 +2,7 @@
 
 The marble's movement will be controlled by moving the Sense HAT. The Sense HAT library can detect pitch, roll and yaw. You can see a picture illustrating this below.
 
-	![orientation](images/orientation.png)
+![Sense HAT orientation](images/orientation.png)
 
 + Locate the code that sets the position of the marble and draws the maze on the display.
 
