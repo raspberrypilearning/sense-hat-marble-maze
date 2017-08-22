@@ -6,8 +6,6 @@ The maze needs a marble. Let's change one of the LEDs in the maze list to white,
 
 [[[rpi-sensehat-display-colour]]]
 
-[[[generic-theory-colours]]]
-
 --- hints ---
 --- hint ---
 You defined the colour red like this. Can you add a line of code similar to this to represent the colour white?
@@ -20,9 +18,7 @@ r = (255,0,0)
 --- hint ---
 Here is how your code should look:
 
-```python
-w = (255,255,255)
-```
+![Add colour hint](images/add-colour-hint.png)
 --- /hint ---
 --- /hints ---
 
@@ -32,11 +28,11 @@ w = (255,255,255)
 
 + Add some code to set the pixel in the maze at the coordinates `y`, `x` to the colour white you just created.
 
-![Add code to display marble](images/add-display-marble.png)
-
 ```python
 maze[y][x] = w
 ```
+
+![Add code to display marble](images/add-display-marble.png)
 
 - Save your code and run it to see the maze and marble on the LED matrix.
 
