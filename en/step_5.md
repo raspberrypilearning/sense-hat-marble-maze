@@ -18,9 +18,6 @@ b = (0,0,0)
 ```
 In this example, `r` represents red and `b` represents blank.
 
-[[[rpi-sensehat-display-colour]]]
-
-
 - Add code to draw your maze by copying the letters you wrote on your plan into a two dimensional list. Each row of LEDs is represented by a single list, and the rows are grouped together in a larger list.
 
 	```python
@@ -35,9 +32,9 @@ In this example, `r` represents red and `b` represents blank.
 
 	```
 
-**Important:** It is possible to draw on the LED matrix using a single list of 64 items. We have deliberately set up the display as a two dimensional list because we will need to access the rows and columns of the LED matrix separately for the game.
+**Important:** It is possible to draw on the LED matrix using a single list of 64 items. We have deliberately set up the maze as a two dimensional list because we will need to access the rows and columns of the LED matrix separately for the game.
 
-- Display your maze on the LED matrix. To do this, **flatten** the **list of lists** into a single list and then display it, like this:
+- Display your maze on the LED matrix. To do this, **flatten** the two dimensional list into a single list and then display it, like this:
 
 ```python
 sense.set_pixels(sum(maze,[]))

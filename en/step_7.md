@@ -1,5 +1,13 @@
 ## Moving the marble
 
+
+
+
++ Underneath the code that draws the maze, create a boolean variable called `game_over` with a starting value of `False`.
+
++ Next you can create a `while` loop, and use it to add the marble to the maze list and then redraw the maze.
+
+
 - The marble's movement will be controlled by the orientation of the Sense HAT. The Sense HAT library can detect the pitch, roll and yaw of the board. You can see a picture illustrating this below.
 
 	![orientation](images/orientation.png)
@@ -100,4 +108,3 @@
 - Save and run your code. It **will** break, but don't worry: we will fix it in the next step.
 
 <iframe src="https://trinket.io/embed/python/7197ab0e48" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-

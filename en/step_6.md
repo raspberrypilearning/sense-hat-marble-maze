@@ -1,66 +1,43 @@
-## Adding a marble
+## Add a marble
 
-- You're going to need a marble to go in your maze. This can be achieved by changing one of the LEDs in the maze list to be white. Start by creating a variable to store the colour white, in the place where you have set the other colours.
+The maze needs a marble. Let's change one of the LEDs in the maze list to white, to represent the marble.
 
-	```python
-	w = (255,255,255)
-	```
++ Create a variable to store the colour white. Add this code underneath the code where you defined the other colours.
 
-- Then you can set the starting position of the marble. You can use the variable `x` to store the horizontal position and the variable `y` to store the vertical position. (Note that, if you're using `y` to store a vertical position, it's important to ensure you don't ever store the colour yellow with a `y`).
+[[[rpi-sensehat-display-colour]]]
 
-	```python
-	x = 1
-	y = 1
-	```
+[[[generic-theory-colours]]]
 
-- As the marble is going to be continually on the move, it's best to set up a main game loop straight away, before drawing the marble itself. You'll need a variable called `game_over` declared somewhere near the top of your program
+--- hints ---
+--- hint ---
+You defined the colour red like this. Can you add a line of code similar to this to represent the colour white?
 
-	```python
-	game_over = False
-	```
+```python
+r = (255,0,0)
+```
+--- /hint ---
 
-- Next you can create a `while` loop, and use it to add the marble to the maze list and then redraw the maze.
+--- hint ---
+Here is how your code should look:
 
-	```python
-	while not game_over:
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
+```python
+w = (255,255,255)
+```
+--- /hint ---
+--- /hints ---
 
-	```
++ Underneath the code for the colours, create two variables called `x` and `y` to represent the starting position of the marble. Both `x` and `y` should start with a value of 1.
 
-- Your code should now look like this:
+[[[generic-python-creating-a-variable]]]
 
++ Add some code to set the pixel in the maze at the coordinates `y`, `x` to the colour white you just created.
 
-	```python
-	from sense_hat import SenseHat
+![Add code to display marble](images/add-display-marble.png)
 
-	sense = SenseHat()
-	sense.clear()
+```python
+maze[y][x] = w
+```
 
-	r = (255,0,0)
-	b = (0,0,0)
-	w = (255,255,255)
+- Save your code and run it to see the maze and marble on the LED matrix.
 
-	x = 1
-	y = 1
-
-	maze = [[r,r,r,r,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,r,r,b,r,b,b,r],
-			[r,b,r,b,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,b,b,b,r],
-			[r,r,r,r,r,r,r,r]]
-
-	game_over = False
-
-	while not game_over:
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
-	```
-
-- Save it and run it to see the maze and marble on the LED matrix (`Ctrl` + `s`, `F5`)
-
-<iframe src="https://trinket.io/embed/python/fbd97f0e7e" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-
+![Add code to display marble](images/display-marble.png)
