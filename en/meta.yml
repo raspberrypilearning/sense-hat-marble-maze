@@ -19,6 +19,7 @@ steps:
 - title: Set up the Sense HAT
 - title: Draw the maze
 - title: Add a marble
+- title: Detect the pitch and roll
 - title: Move the marble
 - title: Fixing the code
 - title: Handling collisions with the walls
