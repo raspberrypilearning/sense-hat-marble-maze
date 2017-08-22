@@ -1,4 +1,3 @@
----
 title: Sense HAT Marble Maze
 hero_image: images/banner.png
 description: Activity to create a marble maze game that can be played on the LED matrix
@@ -22,8 +21,6 @@ steps:
 - title: Adding a marble
 - title: Moving the marble
 - title: Fixing the code
-- title: Handling collision with the walls.
+- title: Handling collisions with the walls
 - title: For the win
 - title: What Next?
-
-
