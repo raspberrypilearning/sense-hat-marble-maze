@@ -10,9 +10,10 @@ The first problem occurs because, once the marble moves onto the next LED, you h
 
 + Use the sleep function to add a pause of 0.05 seconds
 
+![Add a sleep](images/add-a-sleep.png)
+
 [[[generic-python-sleep]]]
 
-![Add a sleep](images/add-a-sleep.png)
 
 + Then on the line below the `sleep`, add some code to tell the LED at the current `x`, `y` position to reset itself to blank.
 
@@ -57,13 +58,20 @@ As these values would be outside the boundaries of the LED matrix, we get an err
 
 + Save and run your code, then tilt the Sense HAT to check that the marble doesn't get stuck.
 
+--- collapse ---
+---
+title: What will the result look like?
+---
+
 ![Gobbly marble](images/gobbly-marble.gif)
+
+--- /collapse ---
 
 You might notice that your marble gobbles up the walls when it touches them - we'll fix that in the next step!
 
 Now that you have the marble moving horizontally, you need to make it move vertically as well.
 
-+ Add some more code to the `move_marble` function so that it uses the `roll` to move the marble in the y direction.
++ Add some more code to the `move_marble` function so that it uses the `roll` value to move the marble up and down in the y direction.
 
 --- hints ---
 --- hint ---
@@ -73,7 +81,7 @@ Work out which range of values of roll mean the marble should move down the LED 
 --- /hint ---
 
 --- hint ---
-Copy the code you used for changing `new_x` but change the values marked with question marks:
+Inside the function, duplicate the code you used for changing `new_x` but change the values marked with question marks:
 
 ```python
 if 1 < ??? < 179 and ? != ?:
@@ -93,4 +101,11 @@ Here is how your code should look:
 
 ---- /hints ---
 
+
+--- collapse ---
+---
+title: What will the result look like?
+---
 ![Marble moves both ways](images/both-ways.gif)
+
+--- /collapse ---
