@@ -21,7 +21,7 @@ steps:
 - title: Add a marble
 - title: Detect the pitch and roll
 - title: Move the marble
-- title: Fixing the code
+- title: Fix the marble
 - title: Handling collisions with the walls
 - title: For the win
 - title: What Next?

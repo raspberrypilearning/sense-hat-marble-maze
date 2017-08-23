@@ -52,12 +52,13 @@ If the pitch is between 1 and 179, then `new_x` should decrease by 1. Add some c
 
 ![Call the move marble function](images/call-function-move-marble.png)
 
-- Save and run your code, then move the Sense HAT to change the pitch. 
+- Save and run your code, then move the Sense HAT to change the pitch.
 
 --- collapse ---
 ---
 title: What happens on the screen?
 ---
+The marble does not exactly behave as we would like it to!
 
 ![Marble goes wrong](images/wrong-marble.gif)
 
