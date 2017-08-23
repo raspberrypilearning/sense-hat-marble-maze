@@ -44,28 +44,21 @@ If the pitch is between 1 and 179, then `new_x` needs to decrease to represent t
 
 If the pitch is between 1 and 179, then `new_x` should decrease by 1. Add some code within your `move_marble` function to reflect this:
 
-```python
-def move_marble(pitch,roll,x,y):
-	new_x = x
-	new_y = y
-	if 1 < pitch < 179:
-		new_x -= 1
-	return new_x, new_y
-```
+![Move left or right](images/move-left-or-right.png)
 
-+ Add some more code within your `move_marble` function to say "If the pitch is between 359 and 181, then `new_x` should increase by 1".
++ Add more code at the location specified above to say "If the pitch is between 359 and 181, then `new_x` should increase by 1" which will move the marble to the right.
 
-+ To test this code out, you'll need to call the function within the `while` loop.
++ To test this code out, you'll need to **call the function**. Add this line of code inside the `while` loop.
 
-```python
-while not game_over:
-	pitch = sense.get_orientation()['pitch']
-	roll = sense.get_orientation()['roll']
-	x,y = move_marble(pitch,roll,x,y)
-	maze[y][x] = w
-	sense.set_pixels(sum(maze,[]))
-```
+![Call the move marble function](images/call-function-move-marble.png)
 
-- Save and run your code. What happens?
+- Save and run your code, then move the Sense HAT to change the pitch. 
 
-<iframe src="https://trinket.io/embed/python/7197ab0e48" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+--- collapse ---
+---
+title: What happens on the screen?
+---
+
+![Marble goes wrong](images/wrong-marble.gif)
+
+--- /collapse ---
