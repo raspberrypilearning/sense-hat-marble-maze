@@ -56,7 +56,7 @@ If the pitch is between 1 and 179, then `new_x` should decrease by 1. Add some c
 
 --- collapse ---
 ---
-title: What happens on the screen?
+title: What do you see on the LED matrix?
 ---
 The marble does not exactly behave as we would like it to!
 

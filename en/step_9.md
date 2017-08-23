@@ -1,18 +1,20 @@
 ## Fix the marble
 
 There are two problems:
-  - The marble illuminates a whole line of LEDs
-  - The code breaks with a `IndexError: list assignment index out of range` error.
+  - The marble illuminates a whole line of LEDs instead of just one
+  - The code breaks with a `IndexError: list assignment index out of range`
 
 ### Problem one: Lots of LEDs are illuminated
 
 The first problem occurs because, once the marble moves onto the next LED, you have not changed the colour of the first LED back to black.
 
-+ Use the sleep function to add a pause of 0.05 seconds into your while loop, on the line below the code to show the pixels on the Sense HAT display
++ Use the sleep function to add a pause of 0.05 seconds
 
 [[[generic-python-sleep]]]
 
-+ Then on the line below that, add some code to tell the LED at the current `x`, `y` position to reset itself to blank.
+![Add a sleep](images/add-a-sleep.png)
+
++ Then on the line below the `sleep`, add some code to tell the LED at the current `x`, `y` position to reset itself to blank.
 
 --- hints ---
 --- hint ---
@@ -43,42 +45,52 @@ while not game_over:
 
 + Save and run your code. Move the Sense HAT to check that the marble looks as if it is moving.
 
-### Problem two: IndexError
+### Problem two: IndexError: list assignment index out of range
 
-This occurs because in the `move_marble` function, we simply add one or take away one from the `new_x` variable depending on which way the Sense HAT is tilted. Eventually this means that the `new_x` value will increase above `7` or decrease below `0`.
+This occurs because in the `move_marble` function, we always add one or take away one from the `new_x` variable depending on which way the Sense HAT is tilted. Eventually this means that the `new_x` value will increase above `7` or decrease below `0`.
 
-As this would be outside the boundaries of the LED matrix, the SenseHat library returns an error. This can be fixed by only changing `x` and `y` when they are **not** equal to 0 or 7.
+As these values would be outside the boundaries of the LED matrix, we get an error. This can be fixed by only changing `x` and `y` when they are **not** equal to 0 or 7.
 
-+ Alter your `move_marble` function so that it looks like this:
++ Alter your `move_marble` function to check that adding or taking away one from the `new_x` value will not cause the marble to go off the edge. The first has been done for you.
 
-	```python
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179 and x != 0:
-			new_x -= 1
-		elif 359 > pitch > 179 and x != 7 :
-			new_x += 1
-		return new_x,new_y
-	```
+![Stop the marble crashing](images/stop-marble-crashing.png)
 
-- Save and run your code to ensure the marble is moving horizontally across the screen.
++ Save and run your code, then tilt the Sense HAT to check that the marble doesn't get stuck.
 
-- Now that you have the marble moving horizontally, you need to make it move vertically as well. Update the `move_marble` function so that it uses the `roll` to move the marble in the y direction.
+![Gobbly marble](images/gobbly-marble.gif)
 
-	```python
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179 and x != 0:
-			new_x -= 1
-		elif 359 > pitch > 179 and x != 7 :
-			new_x += 1
-		if 1 < roll < 179 and y != 7:
-			new_y += 1
-		elif 359 > roll > 179 and y != 0 :
-			new_y -= 1
-		return new_x,new_y
-	```
+You might notice that your marble gobbles up the walls when it touches them - we'll fix that in the next step!
 
-<iframe src="https://trinket.io/embed/python/5c2e24ced3" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+Now that you have the marble moving horizontally, you need to make it move vertically as well.
+
++ Add some more code to the `move_marble` function so that it uses the `roll` to move the marble in the y direction.
+
+--- hints ---
+--- hint ---
+If you imagine your Sense HAT as a plane again, the roll axis would be the plane rotating from side to side, as if it was doing a barrel roll.
+
+Work out which range of values of roll mean the marble should move down the LED matrix and which range of values of roll mean it should move up.
+--- /hint ---
+
+--- hint ---
+Copy the code you used for changing `new_x` but change the values marked with question marks:
+
+```python
+if 1 < ??? < 179 and ? != ?:
+    ???
+elif 359 > ??? > 179 and ? != ? :
+    ???
+```
+
+--- /hint ---
+
+--- hint ---
+Here is how your code should look:
+
+![Finished marble hint](images/finished-marble-hint.png)
+
+--- /hint ---
+
+---- /hints ---
+
+![Marble moves both ways](images/both-ways.gif)
