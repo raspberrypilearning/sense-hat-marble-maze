@@ -1,7 +1,9 @@
-## What Next?
+## Challenge: improve the maze
 
-- Can you play around with the variable values to make the game easier or more difficult?
++ Change the speed of the marble's movement to make the game easier or more difficult.
 
-- Can you alter the code so that the goal changes position each time the player wins a game? Maybe you could change the maze as well.
++ Alter the code so that the goal changes position each time the player wins a game.
 
-- Can you add in another marble that starts in another part of the maze?
++ Create several mazes and choose one at random.
+
++ Add in a second marble that starts in another part of the maze.

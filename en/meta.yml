@@ -22,6 +22,6 @@ steps:
 - title: Detect the pitch and roll
 - title: Move the marble
 - title: Fix the marble
-- title: Handling collisions with the walls
+- title: Make the walls solid
 - title: For the win
-- title: What Next?
+- title: "Challenge: improve the maze"
