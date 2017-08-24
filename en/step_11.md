@@ -51,11 +51,11 @@ Here is how your code should look. I chose green for my winning marker colour:
 --- hint ---
 Here is some pseudo code to help you:
 
-**IF** maze (x, y) **EQUALS** the winning colour variable
+**IF** maze (y, x) **EQUALS** the winning colour variable
 **DISPLAY** "Win!" on the screen
 **SET** `game_over` variable to `True`
 
-Don't forget that the code after the if statement should **not** be indented to show that it happens regardless of whether you reached the winning marker or not.
+Don't forget that the existing code (from line 56 onwards in the screenshot above) should **not** be indented, because it regardless of whether you reached the winning marker or not.
 --- /hint ---
 
 --- hint ---
