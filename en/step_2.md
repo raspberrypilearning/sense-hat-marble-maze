@@ -10,14 +10,12 @@
 
 [[[rpi-install-software]]]
 
-You’ll need to make sure you have the following packages installed:
+You’ll need to make sure you have the following package installed:
 
 + Sense HAT for Python 3
-+ Pillow
 
 Type these commands into the terminal to install the package:
 
 ```bash
 sudo apt-get install sense-hat
-sudo pip3 install pillow
 ```
