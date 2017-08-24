@@ -19,9 +19,9 @@ Here is the pseudo code:
 
 **IF** the location at `new_y`, `new_x` is not red (i.e. not a wall)
     **RETURN** `new_x`, `new_y`
-**ELIF** the location at `new_y` and `x` is not red (i.e. we can move up/down)
+**ELIF** the location at `new_y`, `x` is not red (i.e. we can move up/down)
     **RETURN** `x`, `new_y`
-**ELIF** the location at `y`, `new_x`is not red (i.e. we can move left/right)
+**ELIF** the location at `y`, `new_x` is not red (i.e. we can move left/right)
     **RETURN** `new_x`, `y`
 **ELSE**
     **RETURN** `x`, `y` (i.e. there is nowhere to move to so stay where you are)
