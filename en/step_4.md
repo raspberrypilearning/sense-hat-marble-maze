@@ -4,7 +4,9 @@
 
 [[[rpi-sensehat-attach]]]
 
-+ If you do not have a Sense HAT, you could create the project in a web browser using the [Sense HAT emulator](https://trinket.io/sense-hat).
++ If you do not have a Sense HAT, you could create the project in a web browser using the Sense HAT emulator.
+
+[[[rpi-sensehat-emulator]]]
 
 + Open the IDLE editor and create a new file, or if you are using the emulator open a new trinket
 
