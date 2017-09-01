@@ -18,6 +18,8 @@ b = (0,0,0)
 ```
 In this example, `r` represents red and `b` represents blank.
 
+[[[generic-theory-colours]]]
+
 - Add code to draw your maze by copying the letters you wrote on your plan into a two dimensional list. Each row of LEDs is represented by a single list, and the rows are grouped together in a larger list.
 
 	```python

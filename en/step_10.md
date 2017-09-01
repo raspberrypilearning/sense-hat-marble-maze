@@ -32,14 +32,15 @@ Here is the pseudo code:
 Here is how your code should look:
 
 ```python
-if maze[new_y][new_x] != r:
-    return new_x, new_y
-elif maze[new_y][x] != r:
-    return x, new_y
-elif maze[y][new_x] != r:
-    return new_x, y
-else:
-    return x,y
+def check_wall(x,y,new_x,new_y):
+    if maze[new_y][new_x] != r:
+        return new_x, new_y
+    elif maze[new_y][x] != r:
+        return x, new_y
+    elif maze[y][new_x] != r:
+        return new_x, y
+    else:
+        return x,y
 ```
 --- /hint ---
 
@@ -52,3 +53,5 @@ new_x, new_y = check_wall(x,y,new_x,new_y)
 ```
 
 + Save and run your code. Move the Sense HAT and check that the marble now stops when it hits a wall, in all directions.
+
+![Solid walls](images/walls-solid.gif)
