@@ -75,7 +75,7 @@ Now that you have the marble moving horizontally, you need to make it move verti
 
 --- hints ---
 --- hint ---
-If you imagine your Sense HAT as a plane again, the roll axis would be the plane rotating from side to side, as if it was doing a barrel roll.
+If you imagine your Sense HAT as a plane again, the roll axis would be the plane rotating from side to side, as if it was doing a victory roll.
 
 Work out which range of values of `roll` mean the marble should move down the LED matrix, and which range of values of `roll` mean it should move up.
 --- /hint ---
