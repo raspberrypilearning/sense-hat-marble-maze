@@ -1,14 +1,12 @@
 ## Make the walls solid
 
-You have probably noticed that when the marble moves around the maze, it deletes the walls as it goes. To prevent this from happening, you're going to need some basic collision detection. To do this you can write a new function.
+You have probably noticed that when the marble moves around the maze, it deletes the walls as it goes. To prevent this from happening, you're going to need some basic **collision detection**. Write a new function for this.
 
-+ Above your `while` loop, add this line of code to begin a new function:
++ Above your while loop, add this line of code to begin a new function:
 
 ```python
 def check_wall(x,y,new_x,new_y):
 ```
-
-The function will check whether there is a wall at the `new_x` and `new_y` coordinates. If there is no wall, then it will return the `new_x` and `new_y`, otherwise it will return to old `x` and `y`. This is why we needed to copy the `x` and `y` variables earlier.
 
 + Add code inside the `check_wall` function to check whether the `new_x` or `new_y` coordinate will be inside a wall. If either of the coordinates is inside a wall, return the old `x` or `y` value for that coordinate.
 
@@ -17,14 +15,14 @@ The function will check whether there is a wall at the `new_x` and `new_y` coord
 --- hint ---
 Here is the pseudo code:
 
-**IF** the location at `new_y`, `new_x` is not red (i.e. not a wall)
-    **RETURN** `new_x`, `new_y`
-**ELIF** the location at `new_y`, `x` is not red (i.e. we can move up/down)
-    **RETURN** `x`, `new_y`
-**ELIF** the location at `y`, `new_x` is not red (i.e. we can move left/right)
-    **RETURN** `new_x`, `y`
-**ELSE**
-    **RETURN** `x`, `y` (i.e. there is nowhere to move to so stay where you are)
+`If` the location at `new_y, new_x` is not red (i.e. not a wall)
+    `return` `new_x`, `new_y`
+`elif` the location at `new_y, x` is not red (i.e. we can move up/down)
+    `return` `x`, `new_y`
+`elif` the location at `y, new_x` is not red (i.e. we can move left/right)
+    `return` `new_x`, `y`
+`else`
+    `return` `x`, `y` (i.e. there is nowhere to move to so stay where you are)
 
 --- /hint ---
 
@@ -46,12 +44,12 @@ def check_wall(x,y,new_x,new_y):
 
 --- /hints ---
 
-+ Call the `check_wall` function within the `move_marble` function to decide what the `x` and `y` coordinates of the marble will be. Put this line of code immediately before the `return` line.
++ Call the `check_wall` function within the `move_marble` function to decide what the `x` and `y` coordinates of the marble will be. Put this line of code immediately above the `return` line.
 
 ```python
 new_x, new_y = check_wall(x,y,new_x,new_y)
 ```
 
-+ Save and run your code. Move the Sense HAT and check that the marble now stops when it hits a wall, in all directions.
++ Save and run your code. Move the Sense HAT and check that the marble now stops when it hits a wall in any direction.
 
 ![Solid walls](images/walls-solid.gif)
