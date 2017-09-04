@@ -2,10 +2,10 @@
 
 ### Hardware
 
-* Sense HAT
+* Sense HAT (If you don't have one, you can use the emulator)
 
 ### Software
-You will need the [latest version of Raspbian](https://www.raspberrypi.org/downloads/) which already includes the following software packages:
+You will need the [latest version of Raspbian](https://www.raspberrypi.org/downloads/), which already includes the following software packages:
 
 - Python 3
 - Sense HAT for Python 3
