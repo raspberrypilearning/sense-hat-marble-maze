@@ -1,4 +1,4 @@
-## Detect the pitch and roll
+## Detect pitch and roll
 
 The marble's movement will be controlled by moving the Sense HAT. The Sense HAT library can detect pitch, roll, and yaw. You can see a picture illustrating this below.
 
