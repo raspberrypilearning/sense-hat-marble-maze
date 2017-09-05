@@ -1,112 +1,65 @@
-## Fixing the code
+## Move the marble
 
-- There are two issues:
-  - A single line of LEDs illuminate instead of a moving marble.
-  - The code breaks with a `IndexError: list assignment index out of range` error.
++ **Above** the while loop, define a new function which will be used to move the marble.
 
-- The first problem occurs because, once the marble moves onto the next LED, you have not changed the colour of the first LED back to black. This can be fixed by adding a short `sleep()` interval and then setting the colour of the `x`,`y` LED in the while loop. Import the `time` library first, near where you imported the SenseHat library.
+```python
+def move_marble(pitch, roll, x, y):
+```
 
-	```python
-	from time import sleep
-	```
+The `pitch`, `roll`, `x`, and `y` variables are passed to the function as parameters.
 
-- Then alter the `while` loop, so that the white LED is reset to black in each cycle.
+[[[generic-python-simple-functions]]]
 
-	```python
-	while not game_over:
-		pitch = sense.get_orientation()['pitch']
-		roll = sense.get_orientation()['roll']
-		x,y = move_marble(pitch,roll,x,y)
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
-		sleep(0.05)
-		maze[y][x] = b
-	```
++ Inside the function, make a copy of the `x` and `y` values:
 
-- Save and run your code to check that the marble looks as if it is moving.
+```python
+def move_marble(pitch, roll, x, y):
+	new_x = x
+	new_y = y
+```
 
-- The `IndexError: list assignment index out of range` error needs to be fixed next. This occurs because both `x` and `y` values can increase above `7` or decrease below `0`. As this would be outside the boundaries of the LED matrix, the SenseHat library returns an error. This can be fixed by only changing `x` and `y` when they are **not** equal to 0 or 7. Alter your `move_marble` function so that it looks like this:
+These will represent the new position of the marble after you've calculated whether it has moved based on the pitch and roll data.
 
-	```python
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179 and x != 0:
-			new_x -= 1
-		elif 359 > pitch > 179 and x != 7 :
-			new_x += 1
-		return new_x,new_y
-	```
+### How does the pitch value change?
 
-- Save and run your code to ensure the marble is moving horizontally across the screen.
+Imagine that the Raspberry Pi with the Sense HAT attached is an aeroplane, and the end with the USB ports is the tail of the plane.
 
-- Now that you have the marble moving horizontally, you need to make it move vertically as well. Update the `move_marble` function so that it uses the `roll` to move the marble in the y direction.
+When the Sense HAT is lying flat, the pitch should be approximately `0`.
 
-	```python
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179 and x != 0:
-			new_x -= 1
-		elif 359 > pitch > 179 and x != 7 :
-			new_x += 1
-		if 1 < roll < 179 and y != 7:
-			new_y += 1
-		elif 359 > roll > 179 and y != 0 :
-			new_y -= 1
-		return new_x,new_y
-	```
+![Pitch flat](images/pitch-flat.png)
 
-- Your full code should now look like this:
+If the Sense HAT is rotated so that the nose of the 'plane' is pointing into the air (as it would at take-off), the pitch value will decrease (359,359,357,356...).
 
-	```python
-	from sense_hat import SenseHat
-	from time import sleep
+![Pitch taking off](images/pitch-takeoff.png)
 
-	sense = SenseHat()
-	sense.clear()
+If the pitch is between `359` and `181`, then the value of `new_x` needs to increase to represent the marble moving towards the edge which is nearest the ground, marked on the diagram with a yellow arrow.
 
-	r = (255,0,0)
-	b = (0,0,0)
-	w = (255,255,255)
+If the Sense HAT is rotated so that the nose of the 'plane' is pointing towards the ground (as it would during landing), the pitch value will increase (0,1,2,3,4...).
 
-	x = 1
-	y = 1
+![Pitch landing](images/pitch-landing.png)
 
-	maze = [[r,r,r,r,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,r,r,b,r,b,b,r],
-			[r,b,r,b,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,b,b,b,r],
-			[r,r,r,r,r,r,r,r]]
+If the pitch is between `1` and `179`, then the value of `new_x` needs to decrease to represent the marble moving the opposite way.
 
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179 and x != 0:
-			new_x -= 1
-		elif 359 > pitch > 179 and x != 7 :
-			new_x += 1
-		if 1 < roll < 179 and y != 7:
-			new_y += 1
-		elif 359 > roll > 179 and y != 0 :
-			new_y -= 1
-		return new_x,new_y
+### Coding the marble
 
-	game_over = False
+If the pitch is between `1` and `179`, then the value of `new_x` should decrease by `1`. Add some code within your `move_marble` function to implement this:
 
-	while not game_over:
-		pitch = sense.get_orientation()['pitch']
-		roll = sense.get_orientation()['roll']
-		x,y = move_marble(pitch,roll,x,y)
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
-		sleep(0.05)
-		maze[y][x] = b
+![Move left or right](images/move-left-or-right.png)
 
-	```
++ Add more code at the location specified above so that, if the pitch is between `359` and `181`, the value of `new_x` increases by `1`. This will move your marble to the right.
 
-<iframe src="https://trinket.io/embed/python/5c2e24ced3" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
++ To test this code out, you'll need to **call the function**. Add this line of code inside the while loop.
 
+![Call the move marble function](images/call-function-move-marble.png)
+
+- Save and run your code, then move the Sense HAT to change its pitch.
+
+--- collapse ---
+---
+title: What do you see on the LED matrix?
+---
+The marble does not exactly behave as we would like!
+
+![Marble goes wrong](images/wrong-marble.gif)
+
+--- /collapse ---

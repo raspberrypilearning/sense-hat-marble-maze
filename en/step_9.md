@@ -1,101 +1,111 @@
-## Handling collision with the walls.
+## Fix the marble
 
-- You have probably noticed that when the marble moves around the maze, it deletes the walls as it goes. To prevent this from happening, you're going to need some basic collision detection. To do this you can write a new function.
+There are two problems:
+  - The marble is a whole line of illuminated LEDs, instead of just one LED
+  - The code breaks with a `IndexError: list assignment index out of range` message
 
-	```python
-	def check_wall(x,y,new_x,new_y):
-	```
+### Problem 1 — lots of LEDs are illuminated
 
-- This function will check whether there is a wall at the `new_x` and `new_y` coordinates. If there is no wall, then it will return the `new_x` and `new_y`, otherwise it will return to old `x` and `y`. This is why we needed to copy the `x` and `y` variables earlier.
+The first problem occurs because, once the marble moves onto the next LED, the colour of the first LED does not change back to blank.
 
-	```python
-	def check_wall(x,y,new_x,new_y):
-		if maze[new_y][new_x] != r:
-			return new_x, new_y
-		elif maze[new_y][x] != r:
-			return x, new_y
-		elif maze[y][new_x] != r:
-			return new_x, y
-		return x,y
-	```
++ Use the `sleep` function to add a pause of 0.05 seconds.
 
-- This function can now be called within the `move_marble` function, to decide what the `x` and `y` coordinates of the marble will be. The last line needs to be changed to return `x` and `y`, and the line before needs to be added, to call the `check_wall` function.
+![Add a sleep](images/add-a-sleep.png)
 
-	```python
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179 and x != 0:
-			new_x -= 1
-		elif 359 > pitch > 179 and x != 7 :
-			new_x += 1
-		if 1 < roll < 179 and y != 7:
-			new_y += 1
-		elif 359 > roll > 179 and y != 0 :
-			new_y -= 1
-		x,y = check_wall(x,y,new_x,new_y)
-		return x,y
-	```
+[[[generic-python-sleep]]]
 
-- The full code should now look like this:
 
-	```python
-	from sense_hat import SenseHat
-	from time import sleep
++ Then, on the line below the `sleep`, add code to tell the LED at the current `x, y` position to reset itself to blank.
 
-	sense = SenseHat()
-	sense.clear()
+--- hints ---
+--- hint ---
+Here is the line of code you used to tell the LED at the current position to turn white:
 
-	r = (255,0,0)
-	b = (0,0,0)
-	w = (255,255,255)
+```python
+maze[y][x] = w
+```
 
-	x = 1
-	y = 1
+Can you alter this code to tell the LED to turn blank?
+--- /hint ---
 
-	maze = [[r,r,r,r,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,r,r,b,r,b,b,r],
-			[r,b,r,b,r,r,r,r],
-			[r,b,b,b,b,b,b,r],
-			[r,b,r,r,r,r,b,r],
-			[r,b,b,r,b,b,b,r],
-			[r,r,r,r,r,r,r,r]]
+--- hint ---
+Your code should look like this:
 
-	def move_marble(pitch,roll,x,y):
-		new_x = x
-		new_y = y
-		if 1 < pitch < 179 and x != 0:
-			new_x -= 1
-		elif 359 > pitch > 179 and x != 7 :
-			new_x += 1
-		if 1 < roll < 179 and y != 7:
-			new_y += 1
-		elif 359 > roll > 179 and y != 0 :
-			new_y -= 1
-		x,y = check_wall(x,y,new_x,new_y)
-		return x,y
+```python
+while not game_over:
+    pitch = sense.get_orientation()['pitch']
+    roll = sense.get_orientation()['roll']
+    x,y = move_marble(pitch,roll,x,y)
+    maze[y][x] = w
+    sense.set_pixels(sum(maze,[]))
+    sleep(0.05)
+    maze[y][x] = b
+```
+--- /hint ---
+--- /hints ---
 
-	def check_wall(x,y,new_x,new_y):
-		if maze[new_y][new_x] != r:
-			return new_x, new_y
-		elif maze[new_y][x] != r:
-			return x, new_y
-		elif maze[y][new_x] != r:
-			return new_x, y
-		return x,y
++ Save and run your code. Move the Sense HAT to check that the marble looks as if it is moving.
 
-	game_over = False
+### Problem 2 — error message
 
-	while not game_over:
-		pitch = sense.get_orientation()['pitch']
-		roll = sense.get_orientation()['roll']
-		x,y = move_marble(pitch,roll,x,y)
-		maze[y][x] = w
-		sense.set_pixels(sum(maze,[]))
-		sleep(0.05)
-		maze[y][x] = b
-	```
+This error occurs because, in the `move_marble` function, we always add or substract `1` from the value of the `new_x` variable, depending on which way the Sense HAT is tilted. Eventually this means that the value of `new_x` value will increase above `7` or decrease below `0`. As these values would be outside the boundaries of the LED matrix, we get an error.
 
-<iframe src="https://trinket.io/embed/python/4ffb8826a8" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+This can be fixed by changing the code so that the values of `x` and `y` are only allowed to decrease or increase when they are **not** equal to 0 or 7.
 
++ Alter your `move_marble` function to check that adding or substracting`1` from the `new_x` value will not cause the marble to go off the edge. The first change looks like this:
+
+![Stop the marble crashing](images/stop-marble-crashing.png)
+
++ Save and run your code. Tilt the Sense HAT to check that the marble doesn't get stuck.
+
+--- collapse ---
+---
+title: What will the result look like?
+---
+
+![Gobbly marble](images/gobbly-marble.gif)
+
+--- /collapse ---
+
+You might notice that your marble gobbles up the walls when it touches them — we'll fix that in the next step!
+
+Now that you have the marble moving horizontally, you need to make it move vertically as well.
+
++ Add some more code to the `move_marble` function so that it uses the `roll` value to move the marble up and down in the `y` direction.
+
+--- hints ---
+--- hint ---
+If you imagine your Sense HAT as a plane again, the roll axis would be the plane rotating from side to side, as if it was doing a victory roll.
+
+Work out which range of values of `roll` mean the marble should move down the LED matrix, and which range of values of `roll` mean it should move up.
+--- /hint ---
+
+--- hint ---
+Inside the function, duplicate the code you used for changing `new_x`. Check out the code below for how to do this, but change the values marked with question marks:
+
+```python
+if 1 < ??? < 179 and ? != ?:
+    ???
+elif 359 > ??? > 179 and ? != ? :
+    ???
+```
+
+--- /hint ---
+
+--- hint ---
+Here is how your code should look:
+
+![Finished marble hint](images/finished-marble-hint.png)
+
+--- /hint ---
+
+---- /hints ---
+
+
+--- collapse ---
+---
+title: What will the result look like?
+---
+![Marble moves both ways](images/both-ways.gif)
+
+--- /collapse ---

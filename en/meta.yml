@@ -1,7 +1,6 @@
----
 title: Sense HAT Marble Maze
 hero_image: images/banner.png
-description: Activity to create a marble maze game that can be played on the LED matrix
+description: Create a marble maze game on the Sense HAT's LED matrix
   of the Sense HAT
 original_url: https://raspberrypi.org/learning/sense-hat-marble-maze
 theme: violet
@@ -16,14 +15,13 @@ site_areas: ''
 steps:
 - title: Introduction
 - title: What you will need
-- title: Sense Hat Marble Maze
-- title: Setting up the Sense HAT
-- title: Drawing the maze
-- title: Adding a marble
-- title: Moving the marble
-- title: Fixing the code
-- title: Handling collision with the walls.
-- title: For the win
-- title: What Next?
-
-
+- title: What is a marble maze?
+- title: Set up the Sense HAT
+- title: Draw the maze
+- title: Add a marble
+- title: Detect pitch and roll
+- title: Move the marble
+- title: Fix the marble
+- title: Make the walls solid
+- title: Goal!
+- title: "Challenge: improve the maze"
