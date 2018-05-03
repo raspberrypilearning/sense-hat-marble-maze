@@ -12,7 +12,7 @@
 
 [[[rpi-gui-idle-opening]]]
 
-+ Save your IDLE file as **marble_maze.py**.
++ Save your IDLE file as **marble_maze.py**
 
 + In the new file, start by importing the Sense HAT module:
 
