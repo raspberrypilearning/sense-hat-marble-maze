@@ -13,7 +13,7 @@ technologies: electronic-components, python, sense-hat
 site_areas: projects
 hardware: electronic-components, sense-hat
 software: python
-version: 4
+version: 4.0.1
 last_tested: 2017-01-01
 steps: 
 - title: Introduction
