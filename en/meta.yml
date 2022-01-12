@@ -1,3 +1,4 @@
+---
 title: Sense HAT Marble Maze
 hero_image: images/banner.png
 description: Create a marble maze game on the Sense HAT's LED matrix
@@ -15,9 +16,10 @@ hardware: electronic-components, sense-hat
 software: python
 version: 4.0.1
 last_tested: 2017-01-01
-steps: 
+steps:
 - title: Introduction
 - title: What you will need
+  completion: engaged
 - title: What is a marble maze?
 - title: Set up the Sense HAT
 - title: Draw the maze
@@ -27,4 +29,5 @@ steps:
 - title: Fix the marble
 - title: Make the walls solid
 - title: Goal!
-- title: "Challenge: improve the maze"
+  completion: internal
+- title: 'Challenge: improve the maze'
