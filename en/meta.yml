@@ -19,9 +19,10 @@ last_tested: 2017-01-01
 steps:
 - title: Introduction
 - title: What you will need
-  completion: engaged
 - title: What is a marble maze?
 - title: Set up the Sense HAT
+  completion:
+  - engaged
 - title: Draw the maze
 - title: Add a marble
 - title: Detect pitch and roll
@@ -29,5 +30,6 @@ steps:
 - title: Fix the marble
 - title: Make the walls solid
 - title: Goal!
-  completion: internal
+  completion:
+  - internal
 - title: 'Challenge: improve the maze'
