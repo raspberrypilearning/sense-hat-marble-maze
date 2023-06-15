@@ -67,4 +67,4 @@ Here is what your code should look like:
 
 - Save and run your code. Move the Sense HAT around and check that when you reach the winning marker your "Win!" message is displayed.
 
-![Win the game](images/win-the-game.gif)
+![Animation showing winning message on a Sense HAT on a Raspberry Pi](images/win-the-game.gif)
